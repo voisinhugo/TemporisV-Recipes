@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/TemporisV-Recipes/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/TemporisV-Recipes/static/js/main.05ac5305.chunk.js",
-    "main.js.map": "/TemporisV-Recipes/static/js/main.05ac5305.chunk.js.map",
-    "runtime-main.js": "/TemporisV-Recipes/static/js/runtime-main.8e4b4eee.js",
-    "runtime-main.js.map": "/TemporisV-Recipes/static/js/runtime-main.8e4b4eee.js.map",
-    "static/js/2.4a9e6fd1.chunk.js": "/TemporisV-Recipes/static/js/2.4a9e6fd1.chunk.js",
-    "static/js/2.4a9e6fd1.chunk.js.map": "/TemporisV-Recipes/static/js/2.4a9e6fd1.chunk.js.map",
-    "static/js/3.3d7bd600.chunk.js": "/TemporisV-Recipes/static/js/3.3d7bd600.chunk.js",
-    "static/js/3.3d7bd600.chunk.js.map": "/TemporisV-Recipes/static/js/3.3d7bd600.chunk.js.map",
+    "main.js": "/TemporisV-Recipes/static/js/main.e833fb91.chunk.js",
+    "main.js.map": "/TemporisV-Recipes/static/js/main.e833fb91.chunk.js.map",
+    "runtime-main.js": "/TemporisV-Recipes/static/js/runtime-main.83acf8a1.js",
+    "runtime-main.js.map": "/TemporisV-Recipes/static/js/runtime-main.83acf8a1.js.map",
+    "static/js/2.e0b81ceb.chunk.js": "/TemporisV-Recipes/static/js/2.e0b81ceb.chunk.js",
+    "static/js/2.e0b81ceb.chunk.js.map": "/TemporisV-Recipes/static/js/2.e0b81ceb.chunk.js.map",
+    "static/js/3.4b133cab.chunk.js": "/TemporisV-Recipes/static/js/3.4b133cab.chunk.js",
+    "static/js/3.4b133cab.chunk.js.map": "/TemporisV-Recipes/static/js/3.4b133cab.chunk.js.map",
     "index.html": "/TemporisV-Recipes/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/TemporisV-Recipes/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.4a9e6fd1.chunk.js.LICENSE.txt": "/TemporisV-Recipes/static/js/2.4a9e6fd1.chunk.js.LICENSE.txt",
+    "static/js/2.e0b81ceb.chunk.js.LICENSE.txt": "/TemporisV-Recipes/static/js/2.e0b81ceb.chunk.js.LICENSE.txt",
     "static/media/dice_logo.42c12a1b.png": "/TemporisV-Recipes/static/media/dice_logo.42c12a1b.png",
     "static/media/nebula.1bec398d.jpg": "/TemporisV-Recipes/static/media/nebula.1bec398d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8e4b4eee.js",
-    "static/js/2.4a9e6fd1.chunk.js",
+    "static/js/runtime-main.83acf8a1.js",
+    "static/js/2.e0b81ceb.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.05ac5305.chunk.js"
+    "static/js/main.e833fb91.chunk.js"
   ]
 }
