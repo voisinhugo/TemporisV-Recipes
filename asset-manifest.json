@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/static/js/main.e833fb91.chunk.js",
+    "main.js.map": "/static/js/main.e833fb91.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a30b8f60.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a30b8f60.js.map",
+    "static/js/2.9781ae0b.chunk.js": "/static/js/2.9781ae0b.chunk.js",
+    "static/js/2.9781ae0b.chunk.js.map": "/static/js/2.9781ae0b.chunk.js.map",
+    "static/js/3.4b133cab.chunk.js": "/static/js/3.4b133cab.chunk.js",
+    "static/js/3.4b133cab.chunk.js.map": "/static/js/3.4b133cab.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.9781ae0b.chunk.js.LICENSE.txt": "/static/js/2.9781ae0b.chunk.js.LICENSE.txt",
+    "static/media/dice_logo.42c12a1b.png": "/static/media/dice_logo.42c12a1b.png",
+    "static/media/nebula.1bec398d.jpg": "/static/media/nebula.1bec398d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a30b8f60.js",
+    "static/js/2.9781ae0b.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.e833fb91.chunk.js"
+  ]
+}
