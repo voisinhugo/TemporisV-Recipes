@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/static/js/main.05ac5305.chunk.js",
-    "main.js.map": "/static/js/main.05ac5305.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b3e871d4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b3e871d4.js.map",
-    "static/js/2.ee062769.chunk.js": "/static/js/2.ee062769.chunk.js",
-    "static/js/2.ee062769.chunk.js.map": "/static/js/2.ee062769.chunk.js.map",
-    "static/js/3.3d7bd600.chunk.js": "/static/js/3.3d7bd600.chunk.js",
-    "static/js/3.3d7bd600.chunk.js.map": "/static/js/3.3d7bd600.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.ee062769.chunk.js.LICENSE.txt": "/static/js/2.ee062769.chunk.js.LICENSE.txt",
-    "static/media/dice_logo.42c12a1b.png": "/static/media/dice_logo.42c12a1b.png",
-    "static/media/nebula.1bec398d.jpg": "/static/media/nebula.1bec398d.jpg"
+    "main.css": "/TemporisV-Recipes/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/TemporisV-Recipes/static/js/main.05ac5305.chunk.js",
+    "main.js.map": "/TemporisV-Recipes/static/js/main.05ac5305.chunk.js.map",
+    "runtime-main.js": "/TemporisV-Recipes/static/js/runtime-main.8e4b4eee.js",
+    "runtime-main.js.map": "/TemporisV-Recipes/static/js/runtime-main.8e4b4eee.js.map",
+    "static/js/2.4a9e6fd1.chunk.js": "/TemporisV-Recipes/static/js/2.4a9e6fd1.chunk.js",
+    "static/js/2.4a9e6fd1.chunk.js.map": "/TemporisV-Recipes/static/js/2.4a9e6fd1.chunk.js.map",
+    "static/js/3.3d7bd600.chunk.js": "/TemporisV-Recipes/static/js/3.3d7bd600.chunk.js",
+    "static/js/3.3d7bd600.chunk.js.map": "/TemporisV-Recipes/static/js/3.3d7bd600.chunk.js.map",
+    "index.html": "/TemporisV-Recipes/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/TemporisV-Recipes/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.4a9e6fd1.chunk.js.LICENSE.txt": "/TemporisV-Recipes/static/js/2.4a9e6fd1.chunk.js.LICENSE.txt",
+    "static/media/dice_logo.42c12a1b.png": "/TemporisV-Recipes/static/media/dice_logo.42c12a1b.png",
+    "static/media/nebula.1bec398d.jpg": "/TemporisV-Recipes/static/media/nebula.1bec398d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b3e871d4.js",
-    "static/js/2.ee062769.chunk.js",
+    "static/js/runtime-main.8e4b4eee.js",
+    "static/js/2.4a9e6fd1.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
     "static/js/main.05ac5305.chunk.js"
   ]
