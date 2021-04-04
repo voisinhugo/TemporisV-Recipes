@@ -1,0 +1,1 @@
+export { SearchByIngredients } from './SearchByIngredients';
