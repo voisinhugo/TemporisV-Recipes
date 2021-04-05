@@ -10,7 +10,7 @@ interface OptionType {
 
 interface Props {
   options: OptionType[];
-  onFieldSelect: (selectedValue: string) => void;
+  onFieldSelect: (selectedValue: string | null) => void;
 }
 
 const StyledSelect = styled(Select)`
@@ -31,8 +31,11 @@ export const SearchBar: FunctionComponent<Props> = ({
     onChange={(selectedOption: OptionType, { action }: { action: string }) => {
       if (action === "select-option") {
         onFieldSelect(selectedOption.value);
+      } else if (action === "clear") {
+        onFieldSelect(null);
       }
     }}
+    isClearable
     {...props}
   />
 );

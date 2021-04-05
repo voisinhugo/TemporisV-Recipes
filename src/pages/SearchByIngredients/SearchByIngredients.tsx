@@ -7,6 +7,10 @@ import { theme } from "../../theme";
 import { unique } from "../../utils/unique";
 import { RecipeCard } from "../../components/RecipeCard";
 import { IngredientSelector } from "./components/IngredientSelector";
+import { getAllRecipes } from "../../api/sheets/getAllRecipes";
+import { doesIncludeAll } from "./utils";
+
+const NUMBER_OF_INGREDIENTS = 5;
 
 const Container = styled.div`
   display: flex;
@@ -41,20 +45,26 @@ const Title = styled.h1`
 export const SearchByIngredients = () => {
   const [recipes, setRecipes] = useState<Recipe[] | null>();
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<
+    (string | null)[]
+  >(new Array(NUMBER_OF_INGREDIENTS).fill(null));
 
+  console.log(selectedIngredients);
+
+  // List of the ingredients in recipes and not yet selected
   const ingredients = unique(
     recipes
       ?.reduce<string[]>((curr, recipe) => curr.concat(recipe.ingredients), [])
       .filter((ingredient) => !selectedIngredients.includes(ingredient))
   );
 
-  const possibleRecipes = recipes?.filter(
-    ({ ingredients }) =>
-      !selectedIngredients
-        .map((selectedIngredient) => ingredients.includes(selectedIngredient))
-        .includes(false)
-  );
+  // The possible recipes have all the selected ingredients in their ingredients
+  const possibleRecipes = recipes?.filter(({ ingredients }) => {
+    return doesIncludeAll(
+      ingredients,
+      selectedIngredients.filter(Boolean) as string[]
+    );
+  });
 
   useEffect(() => {
     const updateRecipes = async () => {
@@ -76,8 +86,7 @@ export const SearchByIngredients = () => {
         <div>
           <Title>Chercher par ingrédients</Title>
           <SelectorListContainer>
-            {/* @ts-ignore */}
-            {[...Array(5).keys()].map((_, index) => (
+            {selectedIngredients.map((_, index) => (
               <div key={index}>
                 <SelectorTitle>Ingrédient {index + 1} :</SelectorTitle>
                 <StyledSelector

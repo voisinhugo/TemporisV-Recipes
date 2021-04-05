@@ -5,8 +5,8 @@ import { mapStringToOption } from "../../utils";
 interface Props {
   index: number;
   ingredients: string[];
-  selectedIngredients: string[];
-  onSelectedIngredientsChange: (ingredients: string[]) => void;
+  selectedIngredients: (string | null)[];
+  onSelectedIngredientsChange: (ingredients: (string | null)[]) => void;
 }
 
 export const IngredientSelector: FunctionComponent<Props> = ({
@@ -15,21 +15,25 @@ export const IngredientSelector: FunctionComponent<Props> = ({
   selectedIngredients,
   onSelectedIngredientsChange,
   ...props
-}) => (
-  <SearchBar
-    options={
-      ingredients
-        ? (selectedIngredients[index]
-            ? [selectedIngredients[index]].concat(ingredients)
-            : ingredients
-          ).map(mapStringToOption)
-        : []
-    }
-    onFieldSelect={(ingredient) => {
-      const copy = [...selectedIngredients];
-      copy[index] = ingredient;
-      onSelectedIngredientsChange(copy);
-    }}
-    {...props}
-  />
-);
+}) => {
+  // The user can select the unselected ingredients + the ingredient selected by this input
+  const selectableIngredients = ingredients
+    ? selectedIngredients[index]
+      ? ([selectedIngredients[index]].concat(ingredients) as string[])
+      : ingredients
+    : [];
+
+  const onChange = (ingredient: string | null) => {
+    const copy = [...selectedIngredients];
+    copy[index] = ingredient;
+    onSelectedIngredientsChange(copy);
+  };
+
+  return (
+    <SearchBar
+      options={selectableIngredients.map(mapStringToOption)}
+      onFieldSelect={onChange}
+      {...props}
+    />
+  );
+};
