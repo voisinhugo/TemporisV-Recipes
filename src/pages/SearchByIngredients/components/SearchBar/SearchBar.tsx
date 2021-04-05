@@ -16,7 +16,6 @@ interface Props {
 const StyledSelect = styled(Select)`
   margin: ${theme.margin.x1}px;
 `;
-// width: 400px;
 
 export const SearchBar: FunctionComponent<Props> = ({
   options,
