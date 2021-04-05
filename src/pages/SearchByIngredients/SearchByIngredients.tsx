@@ -93,8 +93,8 @@ export const SearchByIngredients = () => {
             <div>
               <Title>Recette possibles :</Title>
               <RecipeContainer>
-                {possibleRecipes?.map((recipe) => (
-                  <RecipeCard recipe={recipe} />
+                {possibleRecipes?.map((recipe, index) => (
+                  <RecipeCard recipe={recipe} key={index} />
                 ))}
               </RecipeContainer>
             </div>
