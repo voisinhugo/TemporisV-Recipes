@@ -9,6 +9,8 @@ import { Button } from "../../components/Button";
 import { getEmptyRecipe, Recipe } from "../../api/sheets/Recipes";
 import { appendRecipe } from "../../api/sheets/appendRecipe";
 import { TextInput } from "../../components/TextInput";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   display: flex;
@@ -86,17 +88,22 @@ export const AddRecipe = () => {
   };
 
   const appendValues = () => {
-    if (recipe.item) appendRecipe(recipe);
+    if (recipe.item) appendRecipe(recipe, onAppenedValues);
   };
 
   const resetValue = () => {
     setRecipe(getEmptyRecipe());
   };
 
+  const onAppenedValues = () => {
+    toast.success("Recette ajoutée ! 🚀");
+  };
+
   return (
     <Container>
       {isLoggedIn ? (
         <LoggedInContainer>
+          <ToastContainer />
           <LoggedInHeader>
             <LoggedInTitle>Ajouter une recette</LoggedInTitle>
             <GoogleLogoutButton />
