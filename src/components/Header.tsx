@@ -31,6 +31,7 @@ const SectionTitle = styled.h2(
   ({ isSelected }: { isSelected: boolean }) => `
   color: ${isSelected ? theme.color.primary : theme.color.white};
   margin: ${theme.margin.x2}px;
+  cursor: pointer;
 `
 );
 

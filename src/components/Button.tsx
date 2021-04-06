@@ -16,6 +16,7 @@ const StyledButton = styled.button`
   padding-bottom: ${theme.margin.x1}px;
   padding-left: ${theme.margin.x2}px;
   padding-right: ${theme.margin.x2}px;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
