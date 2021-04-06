@@ -4,6 +4,7 @@ import { Header, HEADER_HEIGHT } from "./components/Header";
 import { ShowRecipes } from "./pages/ShowRecipes";
 import SideImage from "./assets/nebula.jpg";
 import { SearchByIngredients } from "./pages/SearchByIngredients";
+import { AddRecipe } from "./pages/AddRecipe";
 
 export interface Section {
   label: string;
@@ -13,7 +14,7 @@ export interface Section {
 const SECTIONS: Section[] = [
   { label: "Liste des recettes", component: <ShowRecipes /> },
   { label: "Chercher par ingrédients", component: <SearchByIngredients /> },
-  { label: "Ajouter une recette", component: <div /> },
+  { label: "Ajouter une recette", component: <AddRecipe /> },
 ];
 
 const BodyContainer = styled.div`

@@ -6,7 +6,7 @@ import { Recipe } from "../../api/sheets/Recipes";
 import { Loader } from "../../components/Loader";
 import { theme } from "../../theme";
 import { RecipeCard } from "../../components/RecipeCard";
-import { TextInput } from "./components/TextInput";
+import { TextInput } from "../../components/TextInput";
 
 const Container = styled.div`
   display: flex;
@@ -68,7 +68,11 @@ export const ShowRecipes: FunctionComponent = () => {
     <Container>
       <HeaderContainer>
         <Title>Recette connues</Title>
-        <TextInput onValueChange={setFilterText} value={filterText} />
+        <TextInput
+          onValueChange={setFilterText}
+          value={filterText}
+          placeholder="Filtrer par"
+        />
       </HeaderContainer>
       {isLoading ? (
         <Loader />
