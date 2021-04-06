@@ -91,12 +91,13 @@ export const AddRecipe = () => {
     if (recipe.item) appendRecipe(recipe, onAppenedValues);
   };
 
-  const resetValue = () => {
+  const resetValues = () => {
     setRecipe(getEmptyRecipe());
   };
 
   const onAppenedValues = () => {
     toast.success("Recette ajoutée ! 🚀");
+    resetValues();
   };
 
   return (
@@ -137,7 +138,7 @@ export const AddRecipe = () => {
           </InputsContainer>
           <BottomButtonsContainer>
             <Button onClick={appendValues}>Ajouter cette recette</Button>
-            <Button onClick={resetValue}>Réinitialiser</Button>
+            <Button onClick={resetValues}>Réinitialiser</Button>
           </BottomButtonsContainer>
         </LoggedInContainer>
       ) : (
