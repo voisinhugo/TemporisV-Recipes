@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TemporisV-Recipes/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/TemporisV-Recipes/static/js/main.b81bae21.chunk.js",
-    "main.js.map": "/TemporisV-Recipes/static/js/main.b81bae21.chunk.js.map",
+    "main.js": "/TemporisV-Recipes/static/js/main.bba57125.chunk.js",
+    "main.js.map": "/TemporisV-Recipes/static/js/main.bba57125.chunk.js.map",
     "runtime-main.js": "/TemporisV-Recipes/static/js/runtime-main.854084ce.js",
     "runtime-main.js.map": "/TemporisV-Recipes/static/js/runtime-main.854084ce.js.map",
     "static/css/2.a5804542.chunk.css": "/TemporisV-Recipes/static/css/2.a5804542.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.a5804542.chunk.css",
     "static/js/2.250afe7d.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.b81bae21.chunk.js"
+    "static/js/main.bba57125.chunk.js"
   ]
 }
