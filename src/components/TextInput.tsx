@@ -1,10 +1,11 @@
 import React, { ChangeEvent, FunctionComponent } from "react";
 import styled from "styled-components";
-import { theme } from "../../../../theme";
+import { theme } from "../theme";
 
 interface Props {
   value: string;
   onValueChange: (value: string) => void;
+  placeholder: string;
 }
 
 const TextField = styled.input`
@@ -21,11 +22,18 @@ const TextField = styled.input`
 export const TextInput: FunctionComponent<Props> = ({
   value,
   onValueChange,
+  placeholder,
+  ...props
 }) => {
   const onChange = (event: ChangeEvent<{ value: string }>) => {
     onValueChange(event.target.value);
   };
   return (
-    <TextField onChange={onChange} value={value} placeholder="Filtrer par" />
+    <TextField
+      onChange={onChange}
+      value={value}
+      placeholder={placeholder}
+      {...props}
+    />
   );
 };
