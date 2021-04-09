@@ -1,0 +1,45 @@
+diff --git a/node_modules/react-select/dist/Select-dbb12e54.esm.js b/node_modules/react-select/dist/Select-dbb12e54.esm.js
+index 452dcc0..2adee8a 100644
+--- a/node_modules/react-select/dist/Select-dbb12e54.esm.js
++++ b/node_modules/react-select/dist/Select-dbb12e54.esm.js
+@@ -2454,7 +2454,11 @@ var Select = /*#__PURE__*/function (_Component) {
+       var menuUI;
+ 
+       if (this.hasOptions()) {
+-        menuUI = this.getCategorizedOptions().map(function (item) {
++        menuUI = this.getCategorizedOptions();
++        if (this.props.resultLimit && this.props.resultLimit > 0) {
++          menuUI = menuUI.slice(0, this.props.resultLimit);
++        }
++        menuUI = menuUI.map(function (item) {
+           if (item.type === 'group') {
+             var data = item.data,
+                 options = item.options,
+diff --git a/node_modules/react-select/src/Select.js b/node_modules/react-select/src/Select.js
+index fa86260..ce175d8 100644
+--- a/node_modules/react-select/src/Select.js
++++ b/node_modules/react-select/src/Select.js
+@@ -225,6 +225,8 @@ export type Props = {
+   pageSize: number,
+   /* Placeholder for the select value */
+   placeholder: Node,
++  /* Limits the number of rendered options in the dropdown */
++  resultLimit?: number,
+   /* Status to relay to screen readers */
+   screenReaderStatus: ({ count: number }) => string,
+   /*
+@@ -1651,8 +1653,12 @@ export default class Select extends Component<Props, State> {
+     let menuUI;
+ 
+     if (this.hasOptions()) {
+-      menuUI = this.getCategorizedOptions().map(item => {
+-        if (item.type === 'group') {
++      menuUI = this.getCategorizedOptions();
++      if (this.props.resultLimit && this.props.resultLimit > 0) {
++        menuUI = menuUI.slice(0, this.props.resultLimit);
++      }
++      menuUI = menuUI.map(item => {
++      if (item.type === 'group') {
+           const { data, options, index: groupIndex } = item;
+           const groupId = `${this.getElementId('group')}-${groupIndex}`;
+           const headingId = `${groupId}-heading`;
