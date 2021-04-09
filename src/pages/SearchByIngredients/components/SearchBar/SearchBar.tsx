@@ -36,6 +36,7 @@ export const SearchBar: FunctionComponent<Props> = ({
       }
     }}
     isClearable
+    resultLimit={10}
     {...props}
   />
 );
