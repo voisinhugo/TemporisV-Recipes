@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { SearchBar } from "../SearchBar";
-import { mapStringToOption } from "../../utils";
+import { mapStringToSearchBarOption } from "../SearchBar/utils";
 
 interface Props {
   index: number;
@@ -31,7 +31,7 @@ export const IngredientSelector: FunctionComponent<Props> = ({
 
   return (
     <SearchBar
-      options={selectableIngredients.map(mapStringToOption)}
+      options={selectableIngredients.map(mapStringToSearchBarOption)}
       onFieldSelect={onChange}
       {...props}
     />
