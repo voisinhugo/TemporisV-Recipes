@@ -46,10 +46,9 @@ export const ShowRecipes: FunctionComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filterText, setFilterText] = useState("");
 
-  const filteredRecipes =
-    filterText === ""
-      ? recipes
-      : recipes?.filter((recipe) => stringContain(recipe.item, filterText));
+  const filteredRecipes = recipes?.filter((recipe) =>
+    stringContain(recipe.item, filterText)
+  );
 
   useEffect(() => {
     const updateRecipes = async () => {
