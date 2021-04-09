@@ -15,7 +15,7 @@ export interface Section {
 const SECTIONS: Section[] = [
   { label: "Liste des recettes", component: <ShowRecipes /> },
   { label: "Liste des cartes", component: <ShowIngredients /> },
-  { label: "Chercher par ingrédients", component: <SearchByIngredients /> },
+  { label: "Chercher par carte", component: <SearchByIngredients /> },
   { label: "Ajouter une recette", component: <AddRecipe /> },
 ];
 
