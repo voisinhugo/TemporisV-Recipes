@@ -5,6 +5,7 @@ import { ShowRecipes } from "./pages/ShowRecipes";
 import SideImage from "./assets/nebula.jpg";
 import { SearchByIngredients } from "./pages/SearchByIngredients";
 import { AddRecipe } from "./pages/AddRecipe";
+import { ShowIngredients } from "./pages/ShowIngredients";
 
 export interface Section {
   label: string;
@@ -13,6 +14,7 @@ export interface Section {
 
 const SECTIONS: Section[] = [
   { label: "Liste des recettes", component: <ShowRecipes /> },
+  { label: "Liste des cartes", component: <ShowIngredients /> },
   { label: "Chercher par ingrédients", component: <SearchByIngredients /> },
   { label: "Ajouter une recette", component: <AddRecipe /> },
 ];
