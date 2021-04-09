@@ -9,8 +9,9 @@ interface Props {
 
 const Container = styled.div`
   display: flex;
-  flex-grow: 1;
+  flex: 1;
   flex-direction: column;
+  min-width: 25%;
   max-width: 50%;
   background-color: ${theme.color.elevation_01};
   margin: ${theme.margin.x1}px;
