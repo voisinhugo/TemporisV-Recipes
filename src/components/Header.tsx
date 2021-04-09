@@ -8,8 +8,8 @@ export const HEADER_HEIGHT = 65;
 
 interface Props {
   listOfSections: Section[];
-  indexOfSelectedSection: number;
-  changeIndexOfSelected: (index: number) => void;
+  indexOfSelectedSection: number | null;
+  changeIndexOfSelected: (index: number | null) => void;
 }
 
 const Container = styled.div`
@@ -25,6 +25,7 @@ const Container = styled.div`
 const Logo = styled.img`
   margin-left: ${theme.margin.x3}px;
   margin-right: ${theme.margin.x2}px;
+  cursor: pointer;
 `;
 
 const SectionTitle = styled.h2(
@@ -41,7 +42,7 @@ export const Header: FunctionComponent<Props> = ({
   changeIndexOfSelected,
 }) => (
   <Container>
-    <Logo src={DiceLogo} />
+    <Logo src={DiceLogo} onClick={() => changeIndexOfSelected(null)} />
     {listOfSections.map((section, index) => (
       <SectionTitle
         isSelected={indexOfSelectedSection === index}

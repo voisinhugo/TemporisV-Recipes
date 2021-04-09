@@ -6,6 +6,7 @@ import SideImage from "./assets/nebula.jpg";
 import { SearchByIngredients } from "./pages/SearchByIngredients";
 import { AddRecipe } from "./pages/AddRecipe";
 import { ShowIngredients } from "./pages/ShowIngredients";
+import { Home } from "./pages/Home";
 
 export interface Section {
   label: string;
@@ -49,7 +50,9 @@ const SectionContainer = styled.div`
 `;
 
 const App: FunctionComponent = () => {
-  const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState<
+    number | null
+  >(null);
 
   return (
     <div>
@@ -61,7 +64,11 @@ const App: FunctionComponent = () => {
       <BodyContainer>
         <LeftPanel src={SideImage} />
         <SectionContainer>
-          {SECTIONS[selectedSectionIndex].component}
+          {selectedSectionIndex === null ? (
+            <Home />
+          ) : (
+            SECTIONS[selectedSectionIndex].component
+          )}
         </SectionContainer>
         <RightPanel src={SideImage} />
       </BodyContainer>
