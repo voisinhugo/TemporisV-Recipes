@@ -7,6 +7,7 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  max-width: 400px;
   background-color: ${theme.color.elevation_01};
   margin: ${theme.margin.x1}px;
   padding: ${theme.margin.x2}px;
