@@ -1,6 +1,6 @@
+# Remove when https://github.com/JedWatson/react-select/pull/4515 will be merged
 diff --git a/node_modules/react-select/dist/Select-dbb12e54.esm.js b/node_modules/react-select/dist/Select-dbb12e54.esm.js
 index 452dcc0..2adee8a 100644
-# Remove when https://github.com/JedWatson/react-select/pull/4515 will be merged
 --- a/node_modules/react-select/dist/Select-dbb12e54.esm.js
 +++ b/node_modules/react-select/dist/Select-dbb12e54.esm.js
 @@ -2454,7 +2454,11 @@ var Select = /*#__PURE__*/function (_Component) {
@@ -44,3 +44,16 @@ index fa86260..ce175d8 100644
            const { data, options, index: groupIndex } = item;
            const groupId = `${this.getElementId('group')}-${groupIndex}`;
            const headingId = `${groupId}-heading`;
+# Remove flow type, to import it with Typescript
+diff --git a/node_modules/react-select/src/diacritics.js b/node_modules/react-select/src/diacritics.js
+index aae0dc4..00fe90e 100644
+--- a/node_modules/react-select/src/diacritics.js
++++ b/node_modules/react-select/src/diacritics.js
+@@ -255,6 +255,6 @@ for (let i = 0; i < diacritics.length; i++) {
+   }
+ }
+ 
+-export const stripDiacritics = (str: string) => {
++export const stripDiacritics = (str) => {
+   return str.replace(anyDiacritic, match => diacriticToBase[match]);
+ };

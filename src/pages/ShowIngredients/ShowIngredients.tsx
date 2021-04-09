@@ -5,7 +5,9 @@ import {
   Ingredient,
 } from "../../api/temporis-v-cards/getAllIngredients";
 import { Loader } from "../../components/Loader";
+import { TextInput } from "../../components/TextInput";
 import { theme } from "../../theme";
+import { stringContain } from "../../utils/stringContain";
 import { IngredientCard } from "./components/IngredientCard";
 
 const Container = styled.div`
@@ -37,6 +39,11 @@ const IngredientContainer = styled.div`
 export const ShowIngredients = () => {
   const [ingredients, setIngredients] = useState<Ingredient[] | undefined>();
   const [isLoading, setIsLoading] = useState(true);
+  const [filterText, setFilterText] = useState("");
+
+  const filteredIngredients = ingredients?.filter(({ name }) =>
+    stringContain(name, filterText)
+  );
 
   useEffect(() => {
     updateIngredients();
@@ -50,13 +57,18 @@ export const ShowIngredients = () => {
 
   return isLoading ? (
     <Loader />
-  ) : ingredients ? (
+  ) : filteredIngredients ? (
     <Container>
       <HeaderContainer>
         <Title>Liste des cartes</Title>
+        <TextInput
+          onValueChange={setFilterText}
+          value={filterText}
+          placeholder="Filtrer par"
+        />
       </HeaderContainer>
       <IngredientContainer>
-        {ingredients.map((ingredient) => (
+        {filteredIngredients.map((ingredient) => (
           <IngredientCard ingredient={ingredient} />
         ))}
       </IngredientContainer>
