@@ -7,6 +7,7 @@ import { Loader } from "../../components/Loader";
 import { theme } from "../../theme";
 import { RecipeCard } from "../../components/RecipeCard";
 import { TextInput } from "../../components/TextInput";
+import { stringContain } from "../../utils/stringContain";
 
 const Container = styled.div`
   display: flex;
@@ -48,9 +49,7 @@ export const ShowRecipes: FunctionComponent = () => {
   const filteredRecipes =
     filterText === ""
       ? recipes
-      : recipes?.filter((recipe) =>
-          recipe.item.toLowerCase().includes(filterText.toLowerCase())
-        );
+      : recipes?.filter((recipe) => stringContain(recipe.item, filterText));
 
   useEffect(() => {
     const updateRecipes = async () => {
