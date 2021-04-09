@@ -36,6 +36,12 @@ const IngredientContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+const ErrorMessage = styled.h4`
+  margin-top: ${theme.margin.x5}px;
+  margin-left: ${theme.margin.x2}px;
+  color: ${theme.color.white};
+`;
+
 export const ShowIngredients = () => {
   const [ingredients, setIngredients] = useState<Ingredient[] | undefined>();
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +63,7 @@ export const ShowIngredients = () => {
 
   return isLoading ? (
     <Loader />
-  ) : filteredIngredients ? (
+  ) : (
     <Container>
       <HeaderContainer>
         <Title>Liste des cartes</Title>
@@ -67,11 +73,17 @@ export const ShowIngredients = () => {
           placeholder="Filtrer par"
         />
       </HeaderContainer>
-      <IngredientContainer>
-        {filteredIngredients.map((ingredient) => (
-          <IngredientCard ingredient={ingredient} />
-        ))}
-      </IngredientContainer>
+      {filteredIngredients?.length === 0 ? (
+        <ErrorMessage>
+          Désolé, il n'y a pas de carte correspondant à "{filterText}"...
+        </ErrorMessage>
+      ) : (
+        <IngredientContainer>
+          {filteredIngredients?.map((ingredient) => (
+            <IngredientCard ingredient={ingredient} />
+          ))}
+        </IngredientContainer>
+      )}
     </Container>
-  ) : null;
+  );
 };
