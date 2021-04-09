@@ -10,6 +10,9 @@ import { appendRecipe } from "../../api/sheets/appendRecipe";
 import { TextInput } from "../../components/TextInput";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SearchBar } from "../SearchByIngredients/components/SearchBar";
+import { getAllIngredients } from "../../api/temporis-v-cards/getAllIngredients";
+import { mapStringToSearchBarOption } from "../SearchByIngredients/components/SearchBar/utils";
 
 const Container = styled.div`
   display: flex;
@@ -40,14 +43,27 @@ const InputsContainer = styled.div`
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
+  margin-top: ${theme.margin.x5}px;
+  margin-bottom: ${theme.margin.x5}px;
+`;
+
+const commonInputStyle = `
+display: flex;
+flex: 1;
+min-width: 200px;
+margin-top: ${theme.margin.x3}px;
+margin-bottom: ${theme.margin.x3}px;
+margin-left: ${theme.margin.x2}px;
+margin-right: ${theme.margin.x2}px;`;
+
+const StyledSearchBar = styled(SearchBar)`
+  ${commonInputStyle}
+  height: 42px;
 `;
 
 const StyledTextInput = styled(TextInput)`
-  display: flex;
-  margin-top: ${theme.margin.x1}px;
-  margin-bottom: ${theme.margin.x1}px;
-  margin-left: ${theme.margin.x2}px;
-  margin-right: ${theme.margin.x2}px;
+  ${commonInputStyle}
+  height: 36px;
 `;
 
 const BottomButtonsContainer = styled.div`
@@ -77,9 +93,18 @@ const LoginButtonContainer = styled.div`
 export const AddRecipe = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [recipe, setRecipe] = useState<Recipe>(getEmptyRecipe());
+  const [ingredients, setIngredients] = useState<string[] | undefined>();
   console.log(recipe);
 
-  useEffect(() => initSheetAPI(updateSignInStatus), []);
+  useEffect(() => {
+    initSheetAPI(updateSignInStatus);
+    updateIngredients();
+  }, []);
+
+  const updateIngredients = async () => {
+    const ingredientList = await getAllIngredients();
+    setIngredients(ingredientList?.map((ingredient) => ingredient.name));
+  };
 
   const updateSignInStatus = (loginStatus: boolean) => {
     console.log(isLoggedIn);
@@ -109,17 +134,22 @@ export const AddRecipe = () => {
             <GoogleLogoutButton />
           </LoggedInHeader>
           <InputsContainer>
-            {recipe.ingredients.map((ingredient, index) => (
-              <StyledTextInput
-                placeholder={`Ingrédient ${index + 1}`}
-                value={ingredient}
-                onValueChange={(newIngredient) => {
-                  const newIngredients = [...recipe.ingredients];
-                  newIngredients[index] = newIngredient;
-                  setRecipe({ ...recipe, ingredients: newIngredients });
-                }}
-              />
-            ))}
+            {ingredients &&
+              recipe.ingredients.map((ingredient, index) => (
+                <StyledSearchBar
+                  placeholder={`Carte ${index + 1}`}
+                  value={
+                    ingredient ? mapStringToSearchBarOption(ingredient) : null
+                  }
+                  options={ingredients?.map(mapStringToSearchBarOption)}
+                  onFieldSelect={(newIngredient) => {
+                    const newIngredients = [...recipe.ingredients];
+                    newIngredients[index] = newIngredient || "";
+                    setRecipe({ ...recipe, ingredients: newIngredients });
+                  }}
+                  innerStyle={{ width: "100%" }}
+                />
+              ))}
             <StyledTextInput
               placeholder="Item obtenu"
               value={recipe.item}

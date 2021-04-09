@@ -11,6 +11,9 @@ interface OptionType {
 interface Props {
   options: OptionType[];
   onFieldSelect: (selectedValue: string | null) => void;
+  placeholder?: string;
+  value?: OptionType[] | OptionType | null;
+  innerStyle?: object;
 }
 
 const StyledSelect = styled(Select)`
@@ -20,6 +23,7 @@ const StyledSelect = styled(Select)`
 export const SearchBar: FunctionComponent<Props> = ({
   options,
   onFieldSelect,
+  innerStyle,
   ...props
 }) => (
   <StyledSelect
@@ -37,6 +41,9 @@ export const SearchBar: FunctionComponent<Props> = ({
     }}
     isClearable
     resultLimit={10}
+    styles={{
+      control: (provided: any) => ({ ...provided, ...innerStyle }),
+    }}
     {...props}
   />
 );
