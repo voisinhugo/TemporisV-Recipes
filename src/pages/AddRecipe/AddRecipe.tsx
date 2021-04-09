@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { SearchBar } from "../SearchByIngredients/components/SearchBar";
 import { getAllIngredients } from "../../api/temporis-v-cards/getAllIngredients";
 import { mapStringToSearchBarOption } from "../SearchByIngredients/components/SearchBar/utils";
+import { getAllStringItems } from "../../api/temporis-v-cards/getAllStringItems";
 
 const Container = styled.div`
   display: flex;
@@ -94,21 +95,28 @@ export const AddRecipe = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [recipe, setRecipe] = useState<Recipe>(getEmptyRecipe());
   const [ingredients, setIngredients] = useState<string[] | undefined>();
+  const [items, setItems] = useState<string[] | undefined>();
   console.log(recipe);
 
   useEffect(() => {
     initSheetAPI(updateSignInStatus);
     updateIngredients();
+    updateItems();
   }, []);
+
+  const updateSignInStatus = (loginStatus: boolean) => {
+    console.log(isLoggedIn);
+    setIsLoggedIn(loginStatus);
+  };
 
   const updateIngredients = async () => {
     const ingredientList = await getAllIngredients();
     setIngredients(ingredientList?.map((ingredient) => ingredient.name));
   };
 
-  const updateSignInStatus = (loginStatus: boolean) => {
-    console.log(isLoggedIn);
-    setIsLoggedIn(loginStatus);
+  const updateItems = async () => {
+    const itemList = await getAllStringItems();
+    setItems(itemList);
   };
 
   const appendValues = () => {
@@ -150,13 +158,19 @@ export const AddRecipe = () => {
                   innerStyle={{ width: "100%" }}
                 />
               ))}
-            <StyledTextInput
-              placeholder="Item obtenu"
-              value={recipe.item}
-              onValueChange={(item) => {
-                setRecipe({ ...recipe, item });
-              }}
-            />
+            {items && (
+              <StyledSearchBar
+                placeholder="Item obtenu"
+                value={
+                  recipe.item ? mapStringToSearchBarOption(recipe.item) : null
+                }
+                options={items?.map(mapStringToSearchBarOption)}
+                onFieldSelect={(item) => {
+                  setRecipe({ ...recipe, item: item || "" });
+                }}
+                innerStyle={{ width: "100%" }}
+              />
+            )}
             <StyledTextInput
               placeholder="Commentaires (facultatif)"
               value={recipe.comment || ""}
