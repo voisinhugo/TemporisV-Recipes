@@ -30,6 +30,10 @@ const Title = styled.h1`
   color: ${theme.color.primary};
 `;
 
+const StyledTextInput = styled(TextInput)`
+  width: 20%;
+`;
+
 const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -66,7 +70,7 @@ export const ShowRecipes: FunctionComponent = () => {
     <Container>
       <HeaderContainer>
         <Title>Recette connues</Title>
-        <TextInput
+        <StyledTextInput
           onValueChange={setFilterText}
           value={filterText}
           placeholder="Filtrer par"

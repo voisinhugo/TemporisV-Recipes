@@ -30,6 +30,10 @@ const Title = styled.h1`
   color: ${theme.color.primary};
 `;
 
+const StyledTextInput = styled(TextInput)`
+  width: 20%;
+`;
+
 const IngredientContainer = styled.div`
   display: flex;
   flex-grow: 1;
@@ -67,7 +71,7 @@ export const ShowIngredients = () => {
     <Container>
       <HeaderContainer>
         <Title>Liste des cartes</Title>
-        <TextInput
+        <StyledTextInput
           onValueChange={setFilterText}
           value={filterText}
           placeholder="Filtrer par"

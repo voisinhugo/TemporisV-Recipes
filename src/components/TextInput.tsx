@@ -9,7 +9,6 @@ interface Props {
 }
 
 const TextField = styled.input`
-  width: 20%;
   height: 30px;
   border-radius: 8px;
   padding-left: 8px;
