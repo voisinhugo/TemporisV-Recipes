@@ -49,8 +49,6 @@ export const SearchByIngredients = () => {
     (string | null)[]
   >(new Array(NUMBER_OF_INGREDIENTS).fill(null));
 
-  console.log(selectedIngredients);
-
   // List of the ingredients in recipes and not yet selected
   const ingredients = unique(
     recipes
