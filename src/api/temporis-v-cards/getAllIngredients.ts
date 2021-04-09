@@ -51,11 +51,20 @@ interface GetIngredientsResponse {
   indexDB: RequestIngredient[];
 }
 
+export type Ingredient = Omit<RequestIngredient, "id">;
+
+const mapRequestIngredientToIngredient = ({
+  id,
+  ...restOfIngredient
+}: RequestIngredient): Ingredient => ({
+  ...restOfIngredient,
+});
+
 export const getAllIngredients = async () => {
   try {
     const res = await axios.get<GetIngredientsResponse>(API_URL);
     const ingredientList = res.data.indexDB;
-    return ingredientList.map((ingredient) => ingredient.name);
+    return ingredientList.map(mapRequestIngredientToIngredient);
   } catch (err) {
     console.error(err);
   }
