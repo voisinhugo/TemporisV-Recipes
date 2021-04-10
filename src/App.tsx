@@ -65,7 +65,7 @@ const App: FunctionComponent = () => {
         <LeftPanel src={SideImage} />
         <SectionContainer>
           {selectedSectionIndex === null ? (
-            <Home />
+            <Home changeSection={setSelectedSectionIndex} sections={SECTIONS} />
           ) : (
             SECTIONS[selectedSectionIndex].component
           )}
