@@ -16,11 +16,15 @@ const Container = styled.div`
   background-color: ${theme.color.elevation_01};
   margin: ${theme.margin.x1}px;
   padding: ${theme.margin.x2}px;
-  border-radius: 10px;
+  padding-top: 0px;
+  border-radius: 4px;
+  box-shadow: 4px 4px ${theme.color.secondary};
 `;
 
 const ItemTitle = styled.h2`
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
+  margin-top: ${theme.margin.x2}px;
+  margin-bottom: ${theme.margin.x1}px;
 `;
 
 const IngredientText = styled.p`

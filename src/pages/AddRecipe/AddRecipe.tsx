@@ -38,7 +38,7 @@ const LoggedInHeader = styled.div`
 
 const LoggedInTitle = styled.h2`
   display: flex;
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
 `;
 
 const InputsContainer = styled.div`

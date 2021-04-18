@@ -27,7 +27,7 @@ const HeaderContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
 `;
 
 const StyledTextInput = styled(TextInput)`

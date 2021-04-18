@@ -14,19 +14,21 @@ const Container = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
 `;
 
 const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${theme.color.elevation_01};
-  border-radius: 16px;
+  border-radius: 4px;
   margin-top: ${theme.margin.x3}px;
   padding: ${theme.margin.x3}px;
 `;
 
 const DescriptionTitle = styled.h2`
+  margin-top: 0px;
+  margin-bottom: ${theme.margin.x1}px;
   color: ${theme.color.white};
 `;
 

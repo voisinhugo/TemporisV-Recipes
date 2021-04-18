@@ -26,7 +26,7 @@ const SelectorListContainer = styled.div`
 `;
 
 const SelectorTitle = styled.h2`
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
 `;
 
 const StyledSelector = styled(IngredientSelector)`
@@ -39,7 +39,7 @@ const RecipeContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
 `;
 
 export const SearchByIngredients = () => {

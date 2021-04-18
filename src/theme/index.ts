@@ -9,9 +9,13 @@ export const theme = {
   },
   color: {
     white: "#FFFFFF",
-    black: "#000000",
-    elevation_00: "#1E1E1E",
-    elevation_01: "#2C2C2C",
-    primary: "#00BFFF",
+    black: "#131613",
+    // elevation_00: "#232523",
+    // elevation_01: "#313532",
+    elevation_00: "#1d1b1b",
+    elevation_01: "#2a2828",
+    // primary: "#B142A7",
+    primary: "#82F27E",
+    secondary: "#156555",
   },
 };

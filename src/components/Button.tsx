@@ -8,8 +8,10 @@ interface Props {
 
 const StyledButton = styled.button`
   display: flex;
-  color: ${theme.color.primary};
+  color: ${theme.color.white};
   background-color: ${theme.color.elevation_01};
+  border-bottom-color: ${theme.color.secondary};
+  border-right-color: ${theme.color.secondary};
   font-size: 20px;
   border-radius: 8px;
   padding-top: ${theme.margin.x1}px;
