@@ -82,11 +82,11 @@ export const SearchByIngredients = () => {
         <Loader />
       ) : (
         <div>
-          <Title>Chercher par ingrédients</Title>
+          <Title>Chercher par carte</Title>
           <SelectorListContainer>
             {selectedIngredients.map((_, index) => (
               <div key={index}>
-                <SelectorTitle>Ingrédient {index + 1} :</SelectorTitle>
+                <SelectorTitle>Carte {index + 1} :</SelectorTitle>
                 <StyledSelector
                   index={index}
                   ingredients={ingredients || []}
