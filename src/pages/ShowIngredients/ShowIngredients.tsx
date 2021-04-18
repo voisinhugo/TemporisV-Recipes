@@ -65,9 +65,7 @@ export const ShowIngredients = () => {
     setIsLoading(false);
   };
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <Container>
       <HeaderContainer>
         <Title>Liste des cartes</Title>
@@ -77,7 +75,9 @@ export const ShowIngredients = () => {
           placeholder="Filtrer par"
         />
       </HeaderContainer>
-      {filteredIngredients?.length === 0 ? (
+      {isLoading ? (
+        <Loader />
+      ) : filteredIngredients?.length === 0 ? (
         <ErrorMessage>
           Désolé, il n'y a pas de carte correspondant à "{filterText}"...
         </ErrorMessage>
