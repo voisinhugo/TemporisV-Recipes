@@ -22,6 +22,8 @@ const Container = styled.div`
 `;
 
 const SelectorListContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
   margin-bottom: ${theme.margin.x5}px;
 `;
 
