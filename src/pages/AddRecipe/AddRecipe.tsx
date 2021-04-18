@@ -14,6 +14,7 @@ import { SearchBar } from "../SearchByIngredients/components/SearchBar";
 import { getAllIngredients } from "../../api/temporis-v-cards/getAllIngredients";
 import { mapStringToSearchBarOption } from "../SearchByIngredients/components/SearchBar/utils";
 import { getAllStringItems } from "../../api/temporis-v-cards/getAllStringItems";
+import { Loader } from "../../components/Loader";
 
 const Container = styled.div`
   display: flex;
@@ -98,6 +99,8 @@ export const AddRecipe = () => {
   const [items, setItems] = useState<string[] | undefined>();
   console.log(recipe);
 
+  const isLoading = !ingredients || !items || isLoggedIn === null;
+
   useEffect(() => {
     initSheetAPI(updateSignInStatus);
     updateIngredients();
@@ -134,7 +137,9 @@ export const AddRecipe = () => {
 
   return (
     <Container>
-      {isLoggedIn ? (
+      {isLoading ? (
+        <Loader />
+      ) : isLoggedIn ? (
         <LoggedInContainer>
           <ToastContainer />
           <LoggedInHeader>
