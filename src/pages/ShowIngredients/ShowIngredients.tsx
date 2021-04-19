@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  getAllIngredients,
-  Ingredient,
-} from "../../api/temporis-v-cards/getAllIngredients";
 import { Loader } from "../../components/Loader";
 import { TextInput } from "../../components/TextInput";
+import { getIngredientSelector } from "../../redux/ingredients/selectors";
 import { theme } from "../../theme";
 import { stringContain } from "../../utils/stringContain";
 import { IngredientCard } from "./components/IngredientCard";
@@ -47,23 +45,13 @@ const ErrorMessage = styled.h4`
 `;
 
 export const ShowIngredients = () => {
-  const [ingredients, setIngredients] = useState<Ingredient[] | undefined>();
-  const [isLoading, setIsLoading] = useState(true);
   const [filterText, setFilterText] = useState("");
+  const ingredients = useSelector(getIngredientSelector);
+  const isLoading = !ingredients;
 
   const filteredIngredients = ingredients?.filter(({ name }) =>
     stringContain(name, filterText)
   );
-
-  useEffect(() => {
-    updateIngredients();
-  }, []);
-
-  const updateIngredients = async () => {
-    const ingredientList = await getAllIngredients();
-    setIngredients(ingredientList);
-    setIsLoading(false);
-  };
 
   return (
     <Container>
