@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
+import { store } from "./redux";
 import reportWebVitals from "./reportWebVitals";
 import { theme } from "./theme";
 
@@ -9,7 +11,9 @@ document.body.style = `height: 100%; background-color: ${theme.color.elevation_0
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

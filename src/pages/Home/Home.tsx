@@ -1,14 +1,7 @@
-import React, { FunctionComponent, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { theme } from "../../theme";
 import { Section } from "../../App";
-import { getAllRecipes } from "../../api/sheets/getAllRecipes";
-import { setRecipesToStore } from "../../redux/recipes/actions";
-import { getAllIngredients } from "../../api/temporis-v-cards/getAllIngredients";
-import { setIngredientsToStore } from "../../redux/ingredients/actions";
-import { getAllItems } from "../../api/temporis-v-cards/getAllItems";
-import { setItemsToStore } from "../../redux/items/actions";
 
 const BANNER_HEIGHT = 50;
 
@@ -82,23 +75,6 @@ interface Props {
 }
 
 export const Home: FunctionComponent<Props> = ({ changeSection, sections }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    updateStore();
-  }, []);
-
-  const updateStore = async () => {
-    const recipes = await getAllRecipes();
-    recipes && dispatch(setRecipesToStore(recipes));
-
-    const ingredients = await getAllIngredients();
-    ingredients && dispatch(setIngredientsToStore(ingredients));
-
-    const items = await getAllItems();
-    items && dispatch(setItemsToStore(items));
-  };
-
   return (
     <div style={{ marginBottom: BANNER_HEIGHT }}>
       <Container>
