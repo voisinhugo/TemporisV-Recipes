@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { GoogleLoginButton } from "../../api/sheets/auth/GoogleLoginButton";
 import { GoogleLogoutButton } from "../../api/sheets/auth/GoogleLogoutButton";
@@ -11,10 +12,10 @@ import { TextInput } from "../../components/TextInput";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SearchBar } from "../SearchByIngredients/components/SearchBar";
-import { getAllIngredients } from "../../api/temporis-v-cards/getAllIngredients";
 import { mapStringToSearchBarOption } from "../SearchByIngredients/components/SearchBar/utils";
-import { getAllStringItems } from "../../api/temporis-v-cards/getAllStringItems";
 import { Loader } from "../../components/Loader";
+import { getIngredientStringSelector } from "../../redux/ingredients/selectors";
+import { getItemStringSelector } from "../../redux/items/selectors";
 
 const Container = styled.div`
   display: flex;
@@ -95,31 +96,18 @@ const LoginButtonContainer = styled.div`
 export const AddRecipe = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [recipe, setRecipe] = useState<Recipe>(getEmptyRecipe());
-  const [ingredients, setIngredients] = useState<string[] | undefined>();
-  const [items, setItems] = useState<string[] | undefined>();
   console.log(recipe);
+  const ingredients = useSelector(getIngredientStringSelector);
+  const items = useSelector(getItemStringSelector);
 
   const isLoading = !ingredients || !items || isLoggedIn === null;
 
   useEffect(() => {
     initSheetAPI(updateSignInStatus);
-    updateIngredients();
-    updateItems();
   }, []);
 
   const updateSignInStatus = (loginStatus: boolean) => {
-    console.log(isLoggedIn);
     setIsLoggedIn(loginStatus);
-  };
-
-  const updateIngredients = async () => {
-    const ingredientList = await getAllIngredients();
-    setIngredients(ingredientList?.map((ingredient) => ingredient.name));
-  };
-
-  const updateItems = async () => {
-    const itemList = await getAllStringItems();
-    setItems(itemList);
   };
 
   const appendValues = () => {

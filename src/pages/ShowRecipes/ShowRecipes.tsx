@@ -1,13 +1,12 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { getAllRecipes } from "../../api/sheets/getAllRecipes";
-import { mockedRecipes } from "../../api/sheets/mockedRecipes";
-import { Recipe } from "../../api/sheets/Recipes";
 import { Loader } from "../../components/Loader";
 import { theme } from "../../theme";
 import { RecipeCard } from "../../components/RecipeCard";
 import { TextInput } from "../../components/TextInput";
 import { stringContain } from "../../utils/stringContain";
+import { getRecipesSelector } from "../../redux/recipes/selectors";
 
 const Container = styled.div`
   display: flex;
@@ -46,25 +45,13 @@ const ErrorMessage = styled.h4`
 `;
 
 export const ShowRecipes: FunctionComponent = () => {
-  const [recipes, setRecipes] = useState<Recipe[] | null>();
-  const [isLoading, setIsLoading] = useState(true);
   const [filterText, setFilterText] = useState("");
+  const recipes = useSelector(getRecipesSelector);
+  const isLoading = !recipes;
 
   const filteredRecipes = recipes?.filter((recipe) =>
     stringContain(recipe.item, filterText)
   );
-
-  useEffect(() => {
-    const updateRecipes = async () => {
-      // const allRecipes = await getAllRecipes();
-      const allRecipes = mockedRecipes;
-      console.log(allRecipes);
-
-      setRecipes(allRecipes);
-      setIsLoading(false);
-    };
-    updateRecipes();
-  }, []);
 
   return (
     <Container>

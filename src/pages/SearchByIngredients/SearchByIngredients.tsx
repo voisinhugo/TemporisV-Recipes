@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { mockedRecipes } from "../../api/sheets/mockedRecipes";
-import { Recipe } from "../../api/sheets/Recipes";
 import { Loader } from "../../components/Loader";
 import { theme } from "../../theme";
 import { unique } from "../../utils/unique";
 import { RecipeCard } from "../../components/RecipeCard";
 import { IngredientSelector } from "./components/IngredientSelector";
-import { getAllRecipes } from "../../api/sheets/getAllRecipes";
 import { doesIncludeAll } from "./utils";
+import { useSelector } from "react-redux";
+import { getRecipesSelector } from "../../redux/recipes/selectors";
 
 const NUMBER_OF_INGREDIENTS = 5;
 
@@ -45,11 +44,11 @@ const Title = styled.h1`
 `;
 
 export const SearchByIngredients = () => {
-  const [recipes, setRecipes] = useState<Recipe[] | null>();
-  const [isLoading, setIsLoading] = useState(true);
   const [selectedIngredients, setSelectedIngredients] = useState<
     (string | null)[]
   >(new Array(NUMBER_OF_INGREDIENTS).fill(null));
+  const recipes = useSelector(getRecipesSelector);
+  const isLoading = !recipes;
 
   // List of the ingredients in recipes and not yet selected
   const ingredients = unique(
@@ -65,18 +64,6 @@ export const SearchByIngredients = () => {
       selectedIngredients.filter(Boolean) as string[]
     );
   });
-
-  useEffect(() => {
-    const updateRecipes = async () => {
-      // const allRecipes = await getAllRecipes();
-      const allRecipes = mockedRecipes;
-      console.log(allRecipes);
-
-      setRecipes(allRecipes);
-      setIsLoading(false);
-    };
-    updateRecipes();
-  }, []);
 
   return (
     <Container>
