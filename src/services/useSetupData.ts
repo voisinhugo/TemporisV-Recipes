@@ -6,6 +6,14 @@ import { getAllIngredients } from "../api/temporis-v-cards/getAllIngredients";
 import { setIngredientsToStore } from "../redux/ingredients/actions";
 import { getAllItems } from "../api/temporis-v-cards/getAllItems";
 import { setItemsToStore } from "../redux/items/actions";
+import { getAllChinqfrRecipes } from "../api/temporis-v-cards/getAllChinqfrRecipes";
+import { uniqueWithObject } from "../utils/unique";
+import { Recipe } from "../api/sheets/Recipes";
+
+const areRecipesEqual = (rec1: Recipe, rec2: Recipe) =>
+  rec1.item === rec2.item &&
+  rec1.ingredients.filter((card) => rec2.ingredients.includes(card)).length ===
+    5;
 
 export const useSetupData = () => {
   const dispatch = useDispatch();
@@ -15,13 +23,25 @@ export const useSetupData = () => {
   }, []);
 
   const updateStore = async () => {
-    const recipes = await getAllRecipes();
-    recipes && dispatch(setRecipesToStore(recipes));
-
     const ingredients = await getAllIngredients();
-    ingredients && dispatch(setIngredientsToStore(ingredients));
+    if (!ingredients) return;
+    dispatch(setIngredientsToStore(ingredients));
 
     const items = await getAllItems();
-    items && dispatch(setItemsToStore(items));
+    if (!items) return;
+    dispatch(setItemsToStore(items));
+
+    const recipes = await getAllRecipes();
+    if (!recipes) return;
+
+    const chinqfrRecipes = await getAllChinqfrRecipes(ingredients, items);
+
+    const allRecipes = chinqfrRecipes
+      ? uniqueWithObject<Recipe>(
+          recipes.concat(chinqfrRecipes),
+          areRecipesEqual
+        )
+      : recipes;
+    allRecipes && dispatch(setRecipesToStore(allRecipes));
   };
 };
