@@ -113,7 +113,7 @@ export const Home: FunctionComponent<Props> = ({ changeSection, sections }) => {
           </DescriptionText>
           <SectionContainer>
             {sections.map((section, index) => (
-              <SectionText onClick={() => changeSection(index)}>
+              <SectionText key={index} onClick={() => changeSection(index)}>
                 {section.label}
               </SectionText>
             ))}
