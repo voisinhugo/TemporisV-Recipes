@@ -7,6 +7,8 @@ import { SearchByIngredients } from "./pages/SearchByIngredients";
 import { AddRecipe } from "./pages/AddRecipe";
 import { ShowIngredients } from "./pages/ShowIngredients";
 import { Home } from "./pages/Home";
+import { Provider } from "react-redux";
+import { store } from "./redux";
 
 export interface Section {
   label: string;
@@ -55,7 +57,7 @@ const App: FunctionComponent = () => {
   >(null);
 
   return (
-    <div>
+    <Provider store={store}>
       <Header
         listOfSections={SECTIONS}
         indexOfSelectedSection={selectedSectionIndex}
@@ -72,7 +74,7 @@ const App: FunctionComponent = () => {
         </SectionContainer>
         <RightPanel src={SideImage} />
       </BodyContainer>
-    </div>
+    </Provider>
   );
 };
 
