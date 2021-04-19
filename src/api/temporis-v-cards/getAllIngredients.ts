@@ -51,14 +51,11 @@ interface GetIngredientsResponse {
   indexDB: RequestIngredient[];
 }
 
-export type Ingredient = Omit<RequestIngredient, "id">;
+export type Ingredient = RequestIngredient;
 
-const mapRequestIngredientToIngredient = ({
-  id,
-  ...restOfIngredient
-}: RequestIngredient): Ingredient => ({
-  ...restOfIngredient,
-});
+const mapRequestIngredientToIngredient = (
+  ingredient: RequestIngredient
+): Ingredient => ingredient;
 
 export const getAllIngredients = async () => {
   try {

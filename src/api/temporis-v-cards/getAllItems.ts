@@ -78,16 +78,15 @@ interface RequestItem {
   level: number;
 }
 
-type Item = Omit<RequestItem, "id">;
+export type Item = RequestItem;
 
-const mapRequestItemToItem = ({ id, ...rest }: RequestItem): Item => ({
-  ...rest,
-});
+const mapRequestItemToItem = (item: RequestItem): Item => item;
 
 export const getAllItems = async () => {
   try {
     const res = await axios.get<RequestItem[]>(API_URL);
-    return res.data.map(mapRequestItemToItem);
+    const items = res.data.map(mapRequestItemToItem);
+    return items;
   } catch (err) {
     console.error(err);
   }
