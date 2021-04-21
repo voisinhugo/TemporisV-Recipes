@@ -3,7 +3,7 @@ import { Recipe } from "../sheets/Recipes";
 import { Ingredient } from "./getAllIngredients";
 import { Item } from "./getAllItems";
 
-const URL = "https://chinq-fr-demo.herokuapp.com/recipes";
+const URL = "https://chinq.fr/api/recipes";
 
 interface RequestRecipe {
   itemId: number;
